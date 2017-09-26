@@ -4,11 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Test task</title>
+  <title>Test task for ENDY</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  
+  <form class="product-list" method="post">
+    <article class="single-product">
+      <img src="img/product-01.jpg" alt="Пицца!">
+      <p class="single-product__name">Пицца Пепперони на тонком тесте</p>
+      <p class="single-product__description">Пепперони, моцарелла, томаты и что-то еще</p>
+      <fieldset class="amount-controls">
+        <button type="button"
+                class="amount-control amount-controls-button amount-controls-button-dec">–
+        </button><!--
+        --><input type="text" class="amount-control amount-controls-value" value="1" readonly title="Количество для заказа" name="scale"/><!--
+        --><button type="button"
+                class="amount-control amount-controls-button amount-controls-button-inc">+
+        </button>
+      </fieldset>
+    </article>
+  </form>
 </body>
 </html>
