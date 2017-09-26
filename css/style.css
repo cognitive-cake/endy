@@ -19,7 +19,40 @@
 
 body {
   font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+  
   max-width: 900px;
   margin: 0 auto;
+  padding-top: 40px;
 }
 
+.order-list {
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.single-product {
+  display: flex;
+  align-items: center;
+  
+  padding-top: 15px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.single-product:last-child {
+  border-bottom: none;
+}
+
+.single-product__name {
+  font-weight: bold;
+}
+
+.amount-controls {
+  display: flex;
+}
+
+.amount-controls__value {
+  width: 10px;
+  border: none;
+}
