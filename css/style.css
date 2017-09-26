@@ -1,32 +1,23 @@
+/* roboto-regular - latin_cyrillic */
 @font-face {
-  font-family: "Open Sans";
+  font-family: 'Roboto';
   font-style: normal;
-  font-weight: normal;
-  src:
-    url(../fonts/opensans.woff),
-    url(../fonts/opensans.woff2);
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('../fonts/roboto-v16-latin_cyrillic-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v16-latin_cyrillic-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-
+/* roboto-700 - latin_cyrillic */
 @font-face {
-  font-family: "Open Sans";
+  font-family: 'Roboto';
   font-style: normal;
-  font-weight: bold;
-  src:
-    url(../fonts/opensansbold.woff),
-    url(../fonts/opensansbold.woff2);
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+       url('../fonts/roboto-v16-latin_cyrillic-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v16-latin_cyrillic-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 body {
-  margin: 0;
-  font-family: "Open Sans", Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-  padding: 0;
-}
