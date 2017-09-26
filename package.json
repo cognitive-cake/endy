@@ -1,0 +1,25 @@
+{
+  "name": "endy",
+  "version": "1.0.0",
+  "description": "Тестовое задание для ENDY",
+  "scripts": {
+    "test": "eslint js/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cognitive-cake/endy.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "devDependencies": {
+    "eslint": "3.9.0",
+    "eslint-config-htmlacademy": "0.2.x"
+  },
+  "dependencies": {},
+  "author": "Николай Черников",
+  "bugs": {
+    "url": "https://github.com/cognitive-cake/endy/issues"
+  },
+  "homepage": "https://github.com/cognitive-cake/endy#readme"
+}
