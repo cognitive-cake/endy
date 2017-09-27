@@ -9,10 +9,32 @@
 </head>
 <body>
   <form class="order-list" method="post">
-    <article class="single-product">
+    <article class="single-order">
       <img src="img/product-01.jpg" alt="Пицца!">
-      <p class="single-product__name">Пицца Пепперони на тонком тесте</p>
-      <p class="single-product__description">Пепперони, моцарелла, томаты и прочая вкуснятина</p>
+      <p class="single-order__name">Пицца Пепперони на тонком тесте</p>
+      <p class="single-order__description">Пепперони, моцарелла, томаты и прочая вкуснятина</p>
+      <div class="amount-controls">
+        <button type="button" class="amount-control amount-controls__btn amount-controls__btn-dec">–</button>
+        <input type="text" class="amount-control amount-controls__value" value="1" title="Количество для заказа" name="amount" readonly>
+        <button type="button" class="amount-control amount-controls__btn amount-controls__btn-inc">+</button>
+      </div>
+      <button type="button" class="remove-btn">Удалить</button>
+    </article>
+    <article class="single-order">
+      <img src="img/product-01.jpg" alt="Пицца!">
+      <p class="single-order__name">Пицца Пепперони на тонком тесте</p>
+      <p class="single-order__description">Пепперони, моцарелла, томаты и прочая вкуснятина</p>
+      <div class="amount-controls">
+        <button type="button" class="amount-control amount-controls__btn amount-controls__btn-dec">–</button>
+        <input type="text" class="amount-control amount-controls__value" value="1" title="Количество для заказа" name="amount" readonly>
+        <button type="button" class="amount-control amount-controls__btn amount-controls__btn-inc">+</button>
+      </div>
+      <button type="button" class="remove-btn">Удалить</button>
+    </article>
+    <article class="single-order">
+      <img src="img/product-01.jpg" alt="Пицца!">
+      <p class="single-order__name">Пицца Пепперони на тонком тесте</p>
+      <p class="single-order__description">Пепперони, моцарелла, томаты и прочая вкуснятина</p>
       <div class="amount-controls">
         <button type="button" class="amount-control amount-controls__btn amount-controls__btn-dec">–</button>
         <input type="text" class="amount-control amount-controls__value" value="1" title="Количество для заказа" name="amount" readonly>
@@ -21,7 +43,6 @@
       <button type="button" class="remove-btn">Удалить</button>
     </article>
   </form>
-
 
 </body>
 </html>
