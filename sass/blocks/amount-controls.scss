@@ -1,7 +1,10 @@
 .amount-controls {
   display: flex;
   
-  &__button {
+  margin-left: 15px;
+  margin-right: 15px;
+  
+  &__btn {
     position: relative;
     
     width: 25px;
@@ -12,6 +15,14 @@
     
     border: 1px solid $endy-red;
     border-radius: 50%;
+    
+    &-dec {
+      margin-right: 11px;
+    }
+    
+    &-inc {
+      margin-left: 11px;
+    }
     
     &-dec::after {
       @include pseudo-line;

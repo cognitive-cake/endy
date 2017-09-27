@@ -397,20 +397,35 @@ body {
   display: flex;
   -webkit-box-align: center;
           align-items: center;
-  padding-top: 15px;
-  padding-bottom: 18px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-top: 16px;
+  padding-bottom: 17px;
+  padding-left: 3px;
+  padding-right: 3px;
   border-bottom: 1px solid #dbdbdb; }
   .single-product:last-child {
     border-bottom: none; }
   .single-product__name {
-    font-weight: bold; }
+    width: 200px;
+    margin-left: 35px;
+    margin-right: 25px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .single-product__description {
+    width: 225px;
+    margin-left: 25px;
+    margin-right: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
 
 .amount-controls {
   display: -webkit-box;
-  display: flex; }
-  .amount-controls__button {
+  display: flex;
+  margin-left: 15px;
+  margin-right: 15px; }
+  .amount-controls__btn {
     position: relative;
     width: 25px;
     height: 25px;
@@ -418,7 +433,11 @@ body {
     background-color: transparent;
     border: 1px solid #ff0000;
     border-radius: 50%; }
-    .amount-controls__button-dec::after {
+    .amount-controls__btn-dec {
+      margin-right: 11px; }
+    .amount-controls__btn-inc {
+      margin-left: 11px; }
+    .amount-controls__btn-dec::after {
       content: '';
       position: absolute;
       top: 50%;
@@ -428,7 +447,7 @@ body {
       background-color: #ff0000;
       width: 11px;
       height: 1px; }
-    .amount-controls__button-inc::after {
+    .amount-controls__btn-inc::after {
       content: '';
       position: absolute;
       top: 50%;
@@ -438,7 +457,7 @@ body {
       background-color: #ff0000;
       width: 11px;
       height: 1px; }
-    .amount-controls__button-inc::before {
+    .amount-controls__btn-inc::before {
       content: '';
       position: absolute;
       top: 50%;
@@ -455,6 +474,7 @@ body {
 .remove-btn {
   width: 82px;
   height: 25px;
+  margin-left: 37px;
   color: #a6a6a6;
   font-size: 13px;
   background-color: transparent;

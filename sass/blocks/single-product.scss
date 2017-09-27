@@ -2,10 +2,10 @@
   display: flex;
   align-items: center;
   
-  padding-top: 15px;
-  padding-bottom: 18px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-top: 16px;
+  padding-bottom: 17px;
+  padding-left: 3px;
+  padding-right: 3px;
   border-bottom: 1px solid #dbdbdb;
   
   &:last-child {
@@ -13,6 +13,25 @@
   }
   
   &__name {
+    width: 200px;
+    
+    margin-left: 35px;
+    margin-right: 25px;
     font-weight: bold;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  &__description {
+    width: 225px;
+    
+    margin-left: 25px;
+    margin-right: 50px;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
