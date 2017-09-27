@@ -16,6 +16,14 @@
     border: 1px solid $endy-red;
     border-radius: 50%;
     
+    &:hover {
+      cursor: pointer;
+    }
+    
+    &:active {
+      transform: translateY(1px);
+    }
+    
     &-dec {
       margin-right: 11px;
     }

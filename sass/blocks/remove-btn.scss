@@ -10,4 +10,18 @@
   
   border-radius: 10px;
   border: 1px solid #bfbfbf;
+  
+  &:hover {
+    cursor: pointer;
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+  
+  &--red {
+    color: #fff;
+    background-color: $endy-red;
+    border-color: $endy-red;
+  }
 }
