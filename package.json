@@ -2,24 +2,36 @@
   "name": "endy",
   "version": "1.0.0",
   "description": "Тестовое задание для ENDY",
+  "author": "Николай Черников",
+  "homepage": "https://github.com/cognitive-cake/endy#readme",
+  "bugs": {
+    "url": "https://github.com/cognitive-cake/endy/issues"
+  },
   "scripts": {
-    "test": "eslint js/"
+    "test": "eslint js/",
+    "start": "gulp serve",
+    "style": "gulp style"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cognitive-cake/endy.git"
   },
   "keywords": [
-    "test"
+    "test work",
+    "endy"
   ],
   "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "browser-sync": "^2.18.13",
+    "css-mqpacker": "^6.0.1",
     "eslint": "3.9.0",
-    "eslint-config-htmlacademy": "0.2.x"
+    "eslint-config-htmlacademy": "0.2.x",
+    "gulp": "^3.9.1",
+    "gulp-csso": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0"
   },
-  "dependencies": {},
-  "author": "Николай Черников",
-  "bugs": {
-    "url": "https://github.com/cognitive-cake/endy/issues"
-  },
-  "homepage": "https://github.com/cognitive-cake/endy#readme"
+  "dependencies": {}
 }

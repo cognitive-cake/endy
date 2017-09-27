@@ -1,0 +1,44 @@
+.amount-controls {
+  display: flex;
+  
+  &__button {
+    position: relative;
+    
+    width: 25px;
+    height: 25px;
+    
+    font-size: 0;
+    background-color: transparent;
+    
+    border: 1px solid $endy-red;
+    border-radius: 50%;
+    
+    &-dec::after {
+      @include pseudo-line;
+      width: 11px;
+      height: 1px;
+    }
+    
+    &-inc::after {
+      @include pseudo-line;
+      width: 11px;
+      height: 1px;
+    }
+    
+    &-inc::before {
+      @include pseudo-line;
+      width: 1px;
+      height: 11px;
+    }
+  }
+  
+  &__value {
+    width: 10px;
+    border: none;
+  }
+}
+
+
+
+
+

@@ -1,0 +1,44 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin pseudo-line {
+  content: '';
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $endy-red;
+}
+
+@mixin container {
+  width: 260px;
+  margin: 0 auto;
+
+  @media ($tablet-widths) {
+    width: 668px;
+  }
+
+  @media ($desktop-widths) {
+    width: 1050px;
+  }
+}
+
+@mixin container-menu {
+//  width: 320px;
+  margin: 0 auto;
+
+  @media ($tablet-widths) {
+    width: 668px;
+  }
+
+  @media ($desktop-widths) {
+    width: 1050px;
+  }
+}
