@@ -3,7 +3,8 @@
 (function () {
   var PARAMETERS = {
     formClass: 'order-list',
-    singlePositionClass: 'single-order',
+    singleOrderClass: 'single-order',
+    amountControls: 'amount-controls',
     buttonClass: 'amount-controls__btn',
     buttonDecClass: 'amount-controls__btn-dec',
     buttonIncClass: 'amount-controls__btn-inc',
@@ -22,10 +23,17 @@
   // Отлавливаем клик на кнопках изменения кол-ва товара
   function onAmountControlsClick(event) {
     var clickTarget = event.target;
-    // debugger;
     while (clickTarget !== orderForm) {
       if (clickTarget.classList.contains(PARAMETERS.buttonClass) && !clickTarget.classList.contains(PARAMETERS.disabledClass)) {
+        var amountControls = clickTarget.parentElement;
+        var decButton = amountControls.querySelector('.' + PARAMETERS.buttonDecClass);
+
         changeAmount(clickTarget);
+        if (hasMinAmount(amountControls)) {
+          disableButton(amountControls);
+        } else if (decButton.classList.contains(PARAMETERS.disabledClass)) {
+          enableButton(amountControls);
+        }
         return;
       }
       clickTarget = clickTarget.parentElement;
@@ -35,43 +43,44 @@
   // ^^^ Обработчики событий ^^^
 
   // Изменение количества товара
-  function changeAmount(clickedBtn) {
-    var counter = clickedBtn.parentElement.querySelector('.' + PARAMETERS.valueClass);
+  function changeAmount(clickedButton) {
+    var counter = clickedButton.parentElement.querySelector('.' + PARAMETERS.valueClass);
 
-    if (clickedBtn.classList.contains(PARAMETERS.buttonDecClass)) {
+    if (clickedButton.classList.contains(PARAMETERS.buttonDecClass)) {
       counter.value = parseInt(counter.value, PARAMETERS.radixForValue) - PARAMETERS.decrementStep;
-    } else if (clickedBtn.classList.contains(PARAMETERS.buttonIncClass)) {
+    } else if (clickedButton.classList.contains(PARAMETERS.buttonIncClass)) {
       counter.value = parseInt(counter.value, PARAMETERS.radixForValue) + PARAMETERS.incrementStep;
     }
   }
 
   // Функция возвращает true, если указано минимальное количество товара
-  function hasMinAmount(singleProductCard) {
-    var valueField = singleProductCard.querySelector('.' + PARAMETERS.valueClass);
+  function hasMinAmount(amountControls) {
+    var valueField = amountControls.querySelector('.' + PARAMETERS.valueClass);
     return parseInt(valueField.value, PARAMETERS.radixForValue) === PARAMETERS.minValue;
   }
 
   // Делает кнопку неактивной
-  function disableButton(singleProductCard) {
-    var decBtn = singleProductCard.querySelector('.' + PARAMETERS.buttonDecClass);
-    decBtn.classList.add(PARAMETERS.disabledClass);
-    decBtn.setAttribute('disabled', '');
+  function disableButton(amountControls) {
+    var decButton = amountControls.querySelector('.' + PARAMETERS.buttonDecClass);
+    decButton.classList.add(PARAMETERS.disabledClass);
+    decButton.setAttribute('disabled', '');
   }
 
   // Делает кнопку активной
-  function enableButton(singleProductCard) {
-    var decBtn = singleProductCard.querySelector('.' + PARAMETERS.buttonDecClass);
-    decBtn.classList.remove(PARAMETERS.disabledClass);
-    decBtn.removeAttribute('disabled');
+  function enableButton(amountControls) {
+    var decButton = amountControls.querySelector('.' + PARAMETERS.buttonDecClass);
+    decButton.classList.remove(PARAMETERS.disabledClass);
+    decButton.removeAttribute('disabled');
   }
 
 
   // Выполнение скрипта
   window.addEventListener('load', function () {
-    var allOrders = orderForm.querySelectorAll('.' + PARAMETERS.singlePositionClass);
+    var allOrders = orderForm.querySelectorAll('.' + PARAMETERS.singleOrderClass);
     allOrders.forEach(function (element) {
-      if (hasMinAmount(element)) {
-        disableButton(element);
+      var amountControls = element.querySelector('.' + PARAMETERS.amountControls);
+      if (hasMinAmount(amountControls)) {
+        disableButton(amountControls);
       }
     });
   });
