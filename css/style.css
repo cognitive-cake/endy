@@ -390,9 +390,6 @@ body {
   margin: 0 auto;
   padding-top: 40px; }
 
-.disabled {
-  opacity: 0.5; }
-
 .amount-controls {
   display: -webkit-box;
   display: flex;
@@ -499,3 +496,8 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
+
+.disabled {
+  opacity: 0.5; }
+  .disabled:hover, .disabled:active {
+    cursor: not-allowed; }
