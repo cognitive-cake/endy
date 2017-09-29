@@ -1,8 +1,9 @@
 .amount-controls {
-  display: flex;
-  
   margin-left: 15px;
   margin-right: 15px;
+  padding: 0;
+  border: none;
+  width: 90px;
   
   &__btn {
     position: relative;
@@ -25,11 +26,11 @@
     }
     
     &-dec {
-      margin-right: 11px;
+      margin-right: 8px;
     }
     
     &-inc {
-      margin-left: 11px;
+      margin-left: 8px;
     }
     
     &-dec::after {
@@ -55,6 +56,11 @@
     width: 10px;
     border: none;
   }
+}
+
+.amount-control {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 
