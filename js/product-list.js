@@ -4,19 +4,26 @@
   var PARAMETERS = {
     formClass: 'order-list',
     singleOrderClass: 'single-order',
+
     amountControlsClass: 'amount-controls',
     buttonClass: 'amount-controls__btn',
     buttonDecClass: 'amount-controls__btn-dec',
     buttonIncClass: 'amount-controls__btn-inc',
-    disabledClass: 'disabled',
     valueClass: 'amount-controls__value',
     radixForValue: 10,
     decrementStep: 1,
     incrementStep: 1,
-    minValue: 1
+    minValue: 1,
+
+    removeButtonClass: 'remove-btn',
+    returnButtonClass: 'remove-btn--red',
+    wordDelete: 'Удалить',
+    wordReturn: 'Вернуть',
+    disabledClass: 'disabled'
   };
 
   var orderForm = document.querySelector('.' + PARAMETERS.formClass);
+  var removeButton = orderForm.querySelector('.' + PARAMETERS.removeButtonClass);
 
   // --- Обработчики событий ---
 
@@ -37,6 +44,18 @@
         return;
       }
       clickTarget = clickTarget.parentElement;
+    }
+  }
+
+  // Клик на кнопке удаления
+  function onRemoveClick(event) {
+    var button = event.target;
+    if (button.classList.contains(PARAMETERS.returnButtonClass)) {
+      button.classList.remove(PARAMETERS.returnButtonClass);
+      button.textContent = PARAMETERS.wordDelete;
+    } else {
+      button.classList.add(PARAMETERS.returnButtonClass);
+      button.textContent = PARAMETERS.wordReturn;
     }
   }
 
@@ -84,4 +103,5 @@
     });
   });
   orderForm.addEventListener('click', onAmountControlsClick);
+  removeButton.addEventListener('click', onRemoveClick);
 })();
