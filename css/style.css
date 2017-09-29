@@ -450,6 +450,9 @@ body {
 .amount-control {
   display: inline-block;
   vertical-align: middle; }
+  .amount-control:disabled {
+    cursor: not-allowed;
+    background-color: transparent; }
 
 .order-list {
   border-top: 1px solid #dbdbdb;

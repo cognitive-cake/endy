@@ -19,15 +19,15 @@
     returnButtonClass: 'remove-btn--red',
     wordDelete: 'Удалить',
     wordReturn: 'Вернуть',
-    disabledClass: 'disabled'
+    disabledClass: 'disabled',
+    disabledAttribute: 'disabled'
   };
 
   var orderForm = document.querySelector('.' + PARAMETERS.formClass);
-  var removeButton = orderForm.querySelector('.' + PARAMETERS.removeButtonClass);
 
   // --- Обработчики событий ---
 
-  // Отлавливаем клик на кнопках изменения кол-ва товара
+  // Клик на кнопках изменения кол-ва товара
   function onAmountControlsClick(event) {
     var clickTarget = event.target;
     while (clickTarget !== orderForm) {
@@ -49,13 +49,22 @@
 
   // Клик на кнопке удаления
   function onRemoveClick(event) {
-    var button = event.target;
-    if (button.classList.contains(PARAMETERS.returnButtonClass)) {
-      button.classList.remove(PARAMETERS.returnButtonClass);
-      button.textContent = PARAMETERS.wordDelete;
-    } else {
-      button.classList.add(PARAMETERS.returnButtonClass);
-      button.textContent = PARAMETERS.wordReturn;
+    var clickTarget = event.target;
+    while (clickTarget !== orderForm) {
+      if (clickTarget.classList.contains(PARAMETERS.removeButtonClass)) {
+        var parentElement = clickTarget.parentElement;
+        if (clickTarget.classList.contains(PARAMETERS.returnButtonClass)) {
+          clickTarget.classList.remove(PARAMETERS.returnButtonClass);
+          clickTarget.textContent = PARAMETERS.wordDelete;
+          enablePosition(parentElement);
+        } else {
+          clickTarget.classList.add(PARAMETERS.returnButtonClass);
+          clickTarget.textContent = PARAMETERS.wordReturn;
+          disablePosition(parentElement);
+        }
+        return;
+      }
+      clickTarget = clickTarget.parentElement;
     }
   }
 
@@ -78,16 +87,40 @@
     return parseInt(valueField.value, PARAMETERS.radixForValue) === PARAMETERS.minValue;
   }
 
-  // Делает кнопку неактивной
+  // Делает кнопку недоступной и неактивной
   function disableButton(decButton) {
     decButton.classList.add(PARAMETERS.disabledClass);
-    decButton.setAttribute('disabled', '');
+    decButton.setAttribute(PARAMETERS.disabledAttribute, '');
   }
 
-  // Делает кнопку активной
+  // Делает кнопку доступной и активной
   function enableButton(decButton) {
     decButton.classList.remove(PARAMETERS.disabledClass);
-    decButton.removeAttribute('disabled');
+    decButton.removeAttribute(PARAMETERS.disabledAttribute);
+  }
+
+  // Деактивация товарной позиции
+  function disablePosition(parentElement) {
+    var elements = parentElement.children;
+    for (var i = 0; i < elements.length; i++) {
+      var singleNode = elements[i];
+      if (!singleNode.classList.contains(PARAMETERS.removeButtonClass)) {
+        singleNode.classList.add(PARAMETERS.disabledClass);
+      }
+      if (singleNode.classList.contains(PARAMETERS.amountControlsClass)) {
+        singleNode.setAttribute(PARAMETERS.disabledAttribute, '');
+      }
+    }
+  }
+
+  // Активация товарной позиции
+  function enablePosition(parentElement) {
+    var elements = parentElement.children;
+    for (var i = 0; i < elements.length; i++) {
+      var singleNode = elements[i];
+      singleNode.classList.remove(PARAMETERS.disabledClass);
+      singleNode.removeAttribute(PARAMETERS.disabledAttribute);
+    }
   }
 
 
@@ -103,5 +136,5 @@
     });
   });
   orderForm.addEventListener('click', onAmountControlsClick);
-  removeButton.addEventListener('click', onRemoveClick);
+  orderForm.addEventListener('click', onRemoveClick);
 })();

@@ -61,6 +61,11 @@
 .amount-control {
   display: inline-block;
   vertical-align: middle;
+  
+  &:disabled {
+    cursor: not-allowed;
+    background-color: transparent;  
+  }
 }
 
 
