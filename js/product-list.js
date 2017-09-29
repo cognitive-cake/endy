@@ -4,7 +4,7 @@
   var PARAMETERS = {
     formClass: 'order-list',
     singleOrderClass: 'single-order',
-    amountControls: 'amount-controls',
+    amountControlsClass: 'amount-controls',
     buttonClass: 'amount-controls__btn',
     buttonDecClass: 'amount-controls__btn-dec',
     buttonIncClass: 'amount-controls__btn-inc',
@@ -30,9 +30,9 @@
 
         changeAmount(clickTarget);
         if (hasMinAmount(amountControls)) {
-          disableButton(amountControls);
+          disableButton(decButton);
         } else if (decButton.classList.contains(PARAMETERS.disabledClass)) {
-          enableButton(amountControls);
+          enableButton(decButton);
         }
         return;
       }
@@ -60,15 +60,13 @@
   }
 
   // Делает кнопку неактивной
-  function disableButton(amountControls) {
-    var decButton = amountControls.querySelector('.' + PARAMETERS.buttonDecClass);
+  function disableButton(decButton) {
     decButton.classList.add(PARAMETERS.disabledClass);
     decButton.setAttribute('disabled', '');
   }
 
   // Делает кнопку активной
-  function enableButton(amountControls) {
-    var decButton = amountControls.querySelector('.' + PARAMETERS.buttonDecClass);
+  function enableButton(decButton) {
     decButton.classList.remove(PARAMETERS.disabledClass);
     decButton.removeAttribute('disabled');
   }
@@ -78,9 +76,10 @@
   window.addEventListener('load', function () {
     var allOrders = orderForm.querySelectorAll('.' + PARAMETERS.singleOrderClass);
     allOrders.forEach(function (element) {
-      var amountControls = element.querySelector('.' + PARAMETERS.amountControls);
+      var amountControls = element.querySelector('.' + PARAMETERS.amountControlsClass);
+      var decButton = element.querySelector('.' + PARAMETERS.buttonDecClass);
       if (hasMinAmount(amountControls)) {
-        disableButton(amountControls);
+        disableButton(decButton);
       }
     });
   });
