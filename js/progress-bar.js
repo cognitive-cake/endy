@@ -8,7 +8,7 @@
     progressBarFillerClass: 'progress-bar__filler',
     progressValueClass: 'progress__value',
     radixForValue: 10,
-    widthUnits: 'px',
+    widthUnits: '%',
     valueUnits: '%'
   };
 
@@ -37,7 +37,7 @@
   }
 
   function setFillerWidth(value) {
-    barFiller.style.width = progressBar.offsetWidth * value / 100 + PARAMETERS.widthUnits;
+    barFiller.style.width = value + PARAMETERS.widthUnits;
   }
 
   function setNewDisplayedValue(value) {
@@ -45,7 +45,7 @@
   }
 
   function setPositionOfDisplayedValue(value) {
-    progressValue.style.left = value + PARAMETERS.valueUnits;
+    progressValue.style.left = value + PARAMETERS.widthUnits;
   }
 
   // Выполнение скрипта

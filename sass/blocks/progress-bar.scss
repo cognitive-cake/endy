@@ -13,10 +13,9 @@
   }
   
   &__filler {
-    position: relative;
-    top: -1px;
-    left: -1px;
-    width: 180px;
+    position: absolute;
+    top: 0;
+    width: 0px;
     height: $progress-bar-height;
     
     background-color: $endy-red;
