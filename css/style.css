@@ -459,10 +459,30 @@ body {
   border-bottom: 1px solid #dbdbdb; }
 
 .progress-bar {
+  position: relative;
   width: 242px;
   height: 25px;
   border-radius: 10px;
-  border: 1px solid #bfbfbf; }
+  overflow: hidden; }
+  .progress-bar__wrapper {
+    width: 240px;
+    height: 23px;
+    border-radius: 10px;
+    border: 1px solid #bfbfbf; }
+  .progress-bar__filler {
+    position: relative;
+    top: -1px;
+    left: -1px;
+    width: 220px;
+    height: 25px;
+    background-color: #ff0000; }
+
+.progress {
+  margin-left: 20px; }
+  .progress__value {
+    position: relative;
+    top: 20px;
+    left: 220px; }
 
 .remove-btn {
   width: 82px;

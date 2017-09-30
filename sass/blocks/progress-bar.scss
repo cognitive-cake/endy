@@ -1,13 +1,24 @@
 .progress-bar {
+  position: relative;
   width: 242px;
   height: 25px;
   border-radius: 10px;
-  border: 1px solid $endy-grey;
+  overflow: hidden;
+  
+  &__wrapper {
+    width: 240px;
+    height: 23px;
+    border-radius: 10px;
+    border: 1px solid $endy-grey;
+  }
   
   &__filler {
+    position: relative;
+    top: -1px;
+    left: -1px;
+    width: 220px;
+    height: 25px;
     
-  }
-  &__value {
-    
+    background-color: $endy-red;
   }
 }

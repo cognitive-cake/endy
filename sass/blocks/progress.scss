@@ -1,5 +1,11 @@
 .progress {
+  margin-left: 20px;
   
+  &__value {
+    position: relative;
+    top: 20px;
+    left: 220px;
+  }
   &__order-number {
     
   }
