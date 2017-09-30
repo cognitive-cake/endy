@@ -1,10 +1,14 @@
 .progress {
   margin-left: 20px;
   
+  &__visualization {
+    position: relative;
+    width: $progress-bar-width;
+  }
   &__value {
     position: relative;
     top: 20px;
-    left: 220px;
+    left: 180px;
   }
   &__order-number {
     

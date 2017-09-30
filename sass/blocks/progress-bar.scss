@@ -1,13 +1,13 @@
 .progress-bar {
   position: relative;
-  width: 242px;
-  height: 25px;
+  width: $progress-bar-width;
+  height: $progress-bar-height;
   border-radius: 10px;
   overflow: hidden;
   
   &__wrapper {
-    width: 240px;
-    height: 23px;
+    width: $progress-bar-width - 2px;
+    height: $progress-bar-height - 2px;
     border-radius: 10px;
     border: 1px solid $endy-grey;
   }
@@ -16,8 +16,8 @@
     position: relative;
     top: -1px;
     left: -1px;
-    width: 220px;
-    height: 25px;
+    width: 180px;
+    height: $progress-bar-height;
     
     background-color: $endy-red;
   }

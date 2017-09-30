@@ -473,16 +473,19 @@ body {
     position: relative;
     top: -1px;
     left: -1px;
-    width: 220px;
+    width: 180px;
     height: 25px;
     background-color: #ff0000; }
 
 .progress {
   margin-left: 20px; }
+  .progress__visualization {
+    position: relative;
+    width: 242px; }
   .progress__value {
     position: relative;
     top: 20px;
-    left: 220px; }
+    left: 180px; }
 
 .remove-btn {
   width: 82px;
