@@ -485,6 +485,7 @@ body {
     position: relative;
     top: 6px;
     left: 0px;
+    display: inline-block;
     font-size: 13px;
     font-weight: bold; }
 
