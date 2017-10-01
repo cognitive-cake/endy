@@ -21,6 +21,12 @@
 
   var oldValue;
 
+  // Отслеживание изменения data-атрибутов
+  var observer = new MutationObserver(onDataAttributeChange);
+  var observerConfig = {
+    attributes: true
+  };
+
   // --- Обработчики событий ---
 
   // Если изменился атрибут
@@ -81,4 +87,5 @@
 
   // Выполнение скрипта
   onDataAttributeChange();
+  observer.observe(progressValue, observerConfig);
 })();
