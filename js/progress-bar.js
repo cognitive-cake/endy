@@ -79,8 +79,21 @@
     element.style.left = position + PARAMETERS.valuePositionUnits;
   }
 
+  // Отрисовка прогресс-баров в соответствии со значениями, которые были переданы вместе с index.html.
+  function setDefaultView(valueElement) {
+    var visualizationElement = valueElement.parentElement;
+    var newValue = getValueFromDataAttribute(valueElement);
+
+    setFillerWidth(visualizationElement, newValue);
+    setNewDisplayedValue(valueElement, newValue);
+
+    var position = calculatePosition(valueElement, visualizationElement, newValue);
+    setPositionOfDisplayedValue(valueElement, position);
+  }
+
   // Выполнение скрипта
   allValueElements.forEach(function (element) {
+    setDefaultView(element);
     observer.observe(element, observerConfig);
   });
 })();
