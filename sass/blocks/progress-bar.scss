@@ -1,5 +1,7 @@
 .progress-bar {
   position: relative;
+  
+  display: inline-block;
   width: $progress-bar-width;
   height: $progress-bar-height;
   border-radius: 10px;

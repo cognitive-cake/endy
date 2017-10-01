@@ -458,8 +458,12 @@ body {
   border-top: 1px solid #dbdbdb;
   border-bottom: 1px solid #dbdbdb; }
 
+.order-progress {
+  margin-top: 88px; }
+
 .progress-bar {
   position: relative;
+  display: inline-block;
   width: 242px;
   height: 25px;
   border-radius: 10px;
@@ -477,17 +481,24 @@ body {
     background-color: #ff0000; }
 
 .progress {
-  margin-left: 20px; }
+  margin-top: 32px;
+  margin-bottom: 32px; }
   .progress__visualization {
     position: relative;
+    display: inline-block;
     width: 242px; }
   .progress__value {
     position: relative;
-    top: 6px;
+    top: 0px;
     left: 0px;
-    display: inline-block;
     font-size: 13px;
     font-weight: bold; }
+  .progress__order-number {
+    display: inline-block;
+    margin: 0;
+    margin-top: 2px;
+    margin-right: 75px;
+    vertical-align: top; }
 
 .remove-btn {
   width: 82px;
