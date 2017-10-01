@@ -2,25 +2,29 @@
 
 (function () {
   var PARAMETERS = {
-    progressFrameClass: 'order-progress',
-    progressBarFillerClass: 'progress-bar__filler',
-    progressValueClass: 'progress__value',
+    frameClass: 'order-progress',
+    singleElementClass: 'progress',
+    visualizationElementClass: 'progress__visualization',
+    barFillerClass: 'progress-bar__filler',
+    valueClass: 'progress__value',
+
     radixForValue: 10,
     fillerUnits: '%',
     valueUnits: '%',
     valuePositionUnits: 'px',
-    dataAttribute: 'data-progress'
+
+    dataAttribute: ['data-progress']
   };
 
-  var orderProgress = document.querySelector('.' + PARAMETERS.progressFrameClass);
-  var allValueElements = orderProgress.querySelectorAll('.' + PARAMETERS.progressValueClass);
+  var orderProgress = document.querySelector('.' + PARAMETERS.frameClass);
+  var allProgressBars = orderProgress.querySelectorAll('.' + PARAMETERS.singleElementClass);
 
   // Отслеживание изменения data-атрибутов
   var observer = new MutationObserver(onDataAttributeChange);
   var observerConfig = {
     attributes: true,
     attributeOldValue: true,
-    attributeFilter: [PARAMETERS.dataAttribute]
+    attributeFilter: PARAMETERS.dataAttribute
   };
 
   // --- Обработчики событий ---
@@ -28,12 +32,16 @@
   // Если изменился атрибут
   function onDataAttributeChange(arrayOfMutationRecords) {
     var record = arrayOfMutationRecords[0];
-    var visualizationElement = record.target.parentElement;
-    var valueElement = record.target;
-    var newValue = getValueFromDataAttribute(valueElement);
+    var progressElement = record.target;
+    var barFiller = progressElement.querySelector('.' + PARAMETERS.barFillerClass);
+    var visualizationElement = progressElement.querySelector('.' + PARAMETERS.visualizationElementClass);
+    var valueElement = progressElement.querySelector('.' + PARAMETERS.valueClass);
+
+
+    var newValue = getValueFromDataAttribute(progressElement);
 
     if (newValue !== +record.oldValue) {
-      setFillerWidth(visualizationElement, newValue);
+      setFillerWidth(barFiller, newValue);
       setNewDisplayedValue(valueElement, newValue);
 
       var position = calculatePosition(valueElement, visualizationElement, newValue);
@@ -44,21 +52,20 @@
   // ^^^ Обработчики событий ^^^
 
   // Возвращает текущее значение атрибута data-progress
-  function getValueFromDataAttribute(element) {
-    var rawValue = element.dataset.progress;
+  function getValueFromDataAttribute(progressElement) {
+    var rawValue = progressElement.dataset.progress;
     var value = parseInt(rawValue, PARAMETERS.radixForValue);
     return value;
   }
 
   // Устанавливает ширину уровня заполненности
-  function setFillerWidth(element, value) {
-    var barFiller = element.querySelector('.' + PARAMETERS.progressBarFillerClass);
+  function setFillerWidth(barFiller, value) {
     barFiller.style.width = value + PARAMETERS.fillerUnits;
   }
 
   // Прописывает новую величину прогресс-бара в DOM-элементе
-  function setNewDisplayedValue(element, value) {
-    element.textContent = value + PARAMETERS.valueUnits;
+  function setNewDisplayedValue(valueElement, value) {
+    valueElement.textContent = value + PARAMETERS.valueUnits;
   }
 
   // Рассчитывает позицию для DOM-элемента progress__value
@@ -66,25 +73,30 @@
     var valueBlockWidth = valueElement.offsetWidth;
     var parentWidth = visualizationElement.offsetWidth;
     var position = parentWidth * value / 100 - valueBlockWidth / 2;
+
     if (position < 0) {
       position = 0;
     } else if (position + valueBlockWidth > parentWidth) {
       position = parentWidth - valueBlockWidth;
     }
+
     return position;
   }
 
   // Позиционирует DOM-элемент, отображающий текущую величину
-  function setPositionOfDisplayedValue(element, position) {
-    element.style.left = position + PARAMETERS.valuePositionUnits;
+  function setPositionOfDisplayedValue(valueElement, position) {
+    valueElement.style.left = position + PARAMETERS.valuePositionUnits;
   }
 
   // Отрисовка прогресс-баров в соответствии со значениями, которые были переданы вместе с index.html.
-  function setDefaultView(valueElement) {
-    var visualizationElement = valueElement.parentElement;
-    var newValue = getValueFromDataAttribute(valueElement);
+  function setDefaultView(progressElement) {
+    var barFiller = progressElement.querySelector('.' + PARAMETERS.barFillerClass);
+    var visualizationElement = progressElement.querySelector('.' + PARAMETERS.visualizationElementClass);
+    var valueElement = progressElement.querySelector('.' + PARAMETERS.valueClass);
 
-    setFillerWidth(visualizationElement, newValue);
+    var newValue = getValueFromDataAttribute(progressElement);
+
+    setFillerWidth(barFiller, newValue);
     setNewDisplayedValue(valueElement, newValue);
 
     var position = calculatePosition(valueElement, visualizationElement, newValue);
@@ -92,7 +104,7 @@
   }
 
   // Выполнение скрипта
-  allValueElements.forEach(function (element) {
+  allProgressBars.forEach(function (element) {
     setDefaultView(element);
     observer.observe(element, observerConfig);
   });
