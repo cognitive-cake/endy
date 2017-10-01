@@ -147,13 +147,15 @@
   // Выполнение скрипта
   window.addEventListener('load', function () {
     var allOrders = orderForm.querySelectorAll('.' + PARAMETERS.singleOrderClass);
-    allOrders.forEach(function (element) {
+    for (var i = 0; i < allOrders.length; i++) {
+      var element = allOrders[i];
       var amountControls = element.querySelector('.' + PARAMETERS.amountControlsClass);
       var decButton = element.querySelector('.' + PARAMETERS.buttonDecClass);
+
       if (hasMinAmount(amountControls)) {
         disableButton(decButton);
       }
-    });
+    }
   });
   orderForm.addEventListener('click', onAmountControlsClick);
   orderForm.addEventListener('click', onRemoveClick);

@@ -104,8 +104,9 @@
   }
 
   // Выполнение скрипта
-  allProgressBars.forEach(function (element) {
+  for (var i = 0; i < allProgressBars.length; i++) {
+    var element = allProgressBars[i];
     setDefaultView(element);
     observer.observe(element, observerConfig);
-  });
+  }
 })();
