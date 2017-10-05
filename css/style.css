@@ -457,6 +457,9 @@ body {
 .order-list {
   border-top: 1px solid #dbdbdb;
   border-bottom: 1px solid #dbdbdb; }
+  .order-list ul {
+    padding: 0;
+    margin: 0; }
 
 .order-progress {
   margin-top: 88px; }
