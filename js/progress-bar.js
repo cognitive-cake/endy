@@ -13,7 +13,9 @@
     valueUnits: '%',
     valuePositionUnits: 'px',
 
-    dataAttribute: ['data-progress']
+    dataAttribute: ['data-progress'],
+
+    invalidValueMsg: 'В атрибут data-progress передано неверное значение. Нужно число.'
   };
 
   var orderProgress = document.querySelector('.' + PARAMETERS.frameClass);
@@ -55,6 +57,9 @@
   function getValueFromDataAttribute(progressElement) {
     var rawValue = progressElement.dataset.progress;
     var value = parseInt(rawValue, PARAMETERS.radixForValue);
+    if (isNaN(value)) {
+      throw new TypeError(PARAMETERS.invalidValueMsg);
+    }
     return value;
   }
 
