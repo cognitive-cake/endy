@@ -14,6 +14,7 @@
     decrementStep: 1,
     incrementStep: 1,
     minValue: 1,
+    maxValue: 15,
 
     removeButtonClass: 'remove-btn',
     returnButtonClass: 'remove-btn--red',
@@ -37,9 +38,11 @@
 
         var amountControls = clickTarget.parentElement;
         var decButton = amountControls.querySelector('.' + PARAMETERS.buttonDecClass);
+        var incButton = amountControls.querySelector('.' + PARAMETERS.buttonIncClass);
 
         changeAmount(clickTarget);
         checkForMinValue(amountControls, decButton);
+        checkForMaxValue(amountControls, incButton);
         return;
 
       }
@@ -89,22 +92,37 @@
     }
   }
 
+  // Проверка на максимальное кол-во товара и работа с кнопкой "+"
+  function checkForMaxValue(amountControls, incButton) {
+    if (hasMaxAmount(amountControls)) {
+      disableButton(incButton);
+    } else if (incButton.classList.contains(PARAMETERS.disabledClass)) {
+      enableButton(incButton);
+    }
+  }
+
   // Функция возвращает true, если указано минимальное количество товара
   function hasMinAmount(amountControls) {
     var valueField = amountControls.querySelector('.' + PARAMETERS.valueClass);
     return parseInt(valueField.value, PARAMETERS.radixForValue) <= PARAMETERS.minValue;
   }
 
-  // Делает кнопку декремента недоступной и неактивной
-  function disableButton(decButton) {
-    decButton.classList.add(PARAMETERS.disabledClass);
-    decButton.setAttribute(PARAMETERS.disabledAttribute, '');
+  // Функция возвращает true, если указано максимальное количество товара
+  function hasMaxAmount(amountControls) {
+    var valueField = amountControls.querySelector('.' + PARAMETERS.valueClass);
+    return parseInt(valueField.value, PARAMETERS.radixForValue) >= PARAMETERS.maxValue;
   }
 
-  // Делает кнопку декремента доступной и активной
-  function enableButton(decButton) {
-    decButton.classList.remove(PARAMETERS.disabledClass);
-    decButton.removeAttribute(PARAMETERS.disabledAttribute);
+  // Делает кнопку недоступной и неактивной
+  function disableButton(button) {
+    button.classList.add(PARAMETERS.disabledClass);
+    button.setAttribute(PARAMETERS.disabledAttribute, '');
+  }
+
+  // Делает кнопку доступной и активной
+  function enableButton(button) {
+    button.classList.remove(PARAMETERS.disabledClass);
+    button.removeAttribute(PARAMETERS.disabledAttribute);
   }
 
   // Изменение кнопки с "Удалить" на "Вернуть"
@@ -151,9 +169,13 @@
       var element = allOrders[i];
       var amountControls = element.querySelector('.' + PARAMETERS.amountControlsClass);
       var decButton = element.querySelector('.' + PARAMETERS.buttonDecClass);
+      var incButton = element.querySelector('.' + PARAMETERS.buttonIncClass);
 
       if (hasMinAmount(amountControls)) {
         disableButton(decButton);
+      }
+      if (hasMaxAmount(amountControls)) {
+        disableButton(incButton);
       }
     }
   });

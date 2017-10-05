@@ -395,7 +395,7 @@ body {
   margin-right: 15px;
   padding: 0;
   border: none;
-  width: 90px; }
+  width: 100px; }
   .amount-controls__btn {
     position: relative;
     width: 25px;
@@ -444,8 +444,9 @@ body {
       width: 1px;
       height: 11px; }
   .amount-controls__value {
-    width: 10px;
-    border: none; }
+    width: 20px;
+    border: none;
+    text-align: center; }
 
 .amount-control {
   display: inline-block;
